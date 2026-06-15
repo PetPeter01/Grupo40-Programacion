@@ -6,4 +6,6 @@ bool esTextoValido(const char* texto);
 
 bool esEnteroValido(const char* entrada, int& numero);
 
+int PedirEnteroValido(string texto);
+
 

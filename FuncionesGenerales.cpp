@@ -22,3 +22,23 @@ bool esEnteroValido(const char* entrada, int& numero) {
     return true;
 }
 
+int PedirEnteroValido(string texto) {
+    char entrada[20];
+    int numero;
+
+    while (true) {
+        cout << texto;
+        cin >> entrada;
+
+        if (esEnteroValido(entrada, numero)) {
+            cin.ignore();
+            break;
+        }
+
+        cout << "Numero invalido." << endl;
+        system("pause");
+        cin.ignore();
+    }
+
+    return numero;
+}
