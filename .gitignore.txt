@@ -1,0 +1,17 @@
+# --- Compilación y Binarios ---
+*.exe
+*.out
+*.app
+
+# --- Archivos Objeto (Código intermedio del compilador) ---
+*.o
+*.obj
+
+# --- Carpetas temporales de Code::Blocks / Visual Studio ---
+obj/
+bin/
+.objs/
+
+# --- Archivos de configuración local del IDE (No subirlos!) ---
+*.layout
+*.depend
