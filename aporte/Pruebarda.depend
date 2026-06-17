@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1781679299 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\detallecompra.cpp
+	<iostream>
+	"DetalleCompra.h"
+
+1781681411 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\detallecompra.h
+	"detalleTransaccion.h"
+
+1781655352 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\detalletransaccion.h
+
+1781681411 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\detalleventa.cpp
+	<iostream>
+	"detalleVenta.h"
+
+1781681411 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\detalleventa.h
+	"detalleTransaccion.h"
+
+1781655352 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\fecha.cpp
+	"Fecha.h"
+
+1781655352 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\fecha.h
+	<iostream>
+	<string>
+
+1781683232 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\funcionesgenerales.cpp
+	"FuncionesGenerales.h"
+	<limits>
+	<iostream>
+
+1781683232 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\funcionesgenerales.h
+	<iostream>
+
+1781655352 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\transaccion.cpp
+	<iostream>
+	"Transaccion.h"
+	"Fecha.h"
+	"FuncionesGenerales.h"
+
+1781655352 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\transaccion.h
+	<string>
+	"Fecha.h"
+
+1781682054 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\main.cpp
+	<iostream>
+	"compra.h"
+	"venta.h"
+	"detalleCompra.h"
+	"detalleVenta.h"
+
+1781681545 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\compra.h
+	"transaccion.h"
+
+1781681411 c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\venta.h
+	"transaccion.h"
+
+1781683258 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\compra.cpp
+	<iostream>
+	"compra.h"
+
+1781683258 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\venta.cpp
+	<iostream>
+	"venta.h"
+	"FuncionesGenerales.h"
+
+1781683664 source:c:\users\paulo\pictures\ian\programacion actividades\actividades en codigo\progra 2 2\pruebarda\detalletransaccion.cpp
+	"DetalleTransaccion.h"
+	"FuncionesGenerales.h"
+
