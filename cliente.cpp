@@ -1,29 +1,20 @@
-#include "persona.h"
-#include "cliente.h"
+#include "Persona.h"
+#include "Cliente.h"
 #include "FuncionesGenerales.h"
 
-void cliente::cargar(int id){
-    int tipo;
-
-    while(true){
-        tipo = PedirEnteroValido("INGRESE EL TIPO CLIENTE: 1. CONSUMIDOR FINAL. / 2. MAYORISTA: ");
-        if(setTipoCliente(tipo)) break;
-        cout << "ERROR: INGRESE 1 o 2";
-    }
-    persona::cargar(tipo);
-
+void Cliente::cargar(char* documento, int id, int tipo){
+    Persona::cargar();
+    setTipoCliente(tipo);
     setIdCliente(id);
 }
 
-void cliente::mostrar(){
+void Cliente::mostrar(){
     std::cout<< "ID: " << getIdCliente() << std::endl;
     std::cout<< "tipo cliente: " << getTipoClienteStr(getTipoCliente()) << std::endl;
-    persona::mostrar();
-
-    std::cout << "--------------------------------"<< std::endl;
+    Persona::mostrar();
 }
 
-bool cliente::setTipoCliente(int tipo){
+bool Cliente::setTipoCliente(int tipo){
     if(tipo==1||tipo==2){
         _tipoCliente = tipo;
         return true;
@@ -31,21 +22,22 @@ bool cliente::setTipoCliente(int tipo){
     return false;
 }
 
-void cliente::setIdCliente(int id){
+void Cliente::setIdCliente(int id){
     _idCliente = id;
 }
 
-int cliente::getIdCliente(){
+int Cliente::getIdCliente(){
     return _idCliente;
 }
 
-int cliente::getTipoCliente(){
+int Cliente::getTipoCliente(){
     return _tipoCliente;
 }
 
-std::string cliente::getTipoClienteStr(int tipo){
+std::string Cliente::getTipoClienteStr(int tipo){
     switch(tipo){
         case 1: return "PARTICULAR";
         case 2: return "MAYORISTA";
     }
+    return "desconocido";
 }

@@ -114,24 +114,103 @@ int ArchivoCliente::altaCliente(int tipo) {
 }
 
 int ArchivoCliente::BuscarPorDocumento(char* documentoBuscado) {
-    Cliente cliente;
+    int tam = contarRegistros();
+    for(int i=0; i<tam; i++){
+        Cliente cliente = leerRegistro(i);
+        if (cliente.getEstado() && strcmp(cliente.getDocumento(), documentoBuscado)==0){
+            cliente.mostrar();
+            return i;
+        }
+    }
+    return -1;
+}
+
+void ArchivoCliente::BuscarPorNombre(const char* nombreBuscado) {
+    int tam = contarRegistros();
+    for(int i=0; i<tam; i++){
+        Cliente cliente = leerRegistro(i);
+        if (cliente.getEstado() && strcmp(cliente.getNombre(), nombreBuscado)==0){
+            cliente.mostrar();
+        }
+    }
+
+}
+
+void ArchivoCliente::BuscarPorApellido(const char* apellidoBuscado) {
+    int tam = contarRegistros();
+    for(int i=0; i<tam; i++){
+        Cliente cliente = leerRegistro(i);
+        if (cliente.getEstado() && strcmp(cliente.getApellido(), apellidoBuscado)==0){
+            cliente.mostrar();
+        }
+    }
+
+}
+
+void ArchivoCliente::listarDocumentosDadosDeBaja() {
+    int tam = contarRegistros();
+    bool hay =  false;
+    for(int i=0; i<tam; i++){
+        Cliente cliente = leerRegistro(i);
+        if(!cliente.getEstado()){
+            cout<< "- " << cliente.getDocumento()<< "\n";
+            hay = true;
+        }
+    }
+    if(!hay){
+        cout << "No hay clientes dados de baja.\n";
+    }
+}
+
+bool ArchivoCliente::bajaLogica(int tipo) {
+
+    Cliente reg;
     FILE* pCliente = fopen(_nombreArchivo, "rb");
 
     if (pCliente == nullptr) {
-        return -2;
+        cout << "ERROR AL ABRIR ARCHIVO\n";
+        return false;
     }
 
-    int pos = 0;
-    while (fread(&cliente, tamanioRegistro, 1, pCliente) == 1) {
-        if (strcmp(cliente.getDocumento(), documentoBuscado)==0) {
-            fclose(pCliente);
-            return pos;
+    bool hay = false;
+    cout << "Documentos cargados:\n";
+    while (fread(&reg, tamanioRegistro, 1, pCliente) == 1) {
+        if (reg.getEstado()) {
+            cout << "- " << reg.getDocumento() << "\n";
+            hay = true;
         }
-        pos++;
     }
 
     fclose(pCliente);
-    return -1;
+
+    if (!hay) {
+        cout << "No hay clientes activos para borrar.\n";
+        return false;
+    }
+
+    cout << "Ingrese el documento (DNI/CUIT) del cliente a borrar: ";
+    reg.cargarDocumento(tipo);
+
+    int pos = BuscarPorDocumento(reg.getDocumento());
+    if (pos < 0) {
+        cout << "No existe un cliente con ese documento.\n";
+        return false;
+    }
+
+    reg = leerRegistro(pos);
+    if (!reg.getEstado()) {
+        cout << "El cliente ya esta dado de baja.\n";
+        return false;
+    }
+
+    reg.setEstado(false);
+    if (modificarRegistro(reg, pos) == 1) {
+        cout << "Cliente dado de baja correctamente.\n";
+        return true;
+    }
+
+    cout << "No se pudo dar de baja al cliente.\n";
+    return false;
 }
 
 int ArchivoCliente::BuscarPorId(int idBuscado) {
@@ -172,3 +251,19 @@ int ArchivoCliente::modificarRegistro(Cliente reg, int pos) {
     return 1;
 }
 
+int ArchivoCliente::reactivarCliente(char* documento) {
+    int pos = BuscarPorDocumento(documento);
+    if (pos >= 0) {
+        Cliente c = leerRegistro(pos);
+        if (c.getEstado()) {
+            return 0;
+        }
+        c.setEstado(true);
+        if (modificarRegistro(c, pos) == 1) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+    return -2;
+}

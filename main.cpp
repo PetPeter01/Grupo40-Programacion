@@ -1,21 +1,33 @@
 #include <iostream>
-#include "persona.h"
-#include "cliente.h"
-
+#include "Menu.h"
+#include "rlutil.h"
 using namespace std;
 
-int main()
-{
-    /*persona p;
-    cout<< "INGRESE TIPO DE DOCUMENTO: 1. DNI / 2. CUIL o CUIT: ";
-    int tipo;
-    cin>> tipo;
-    p.cargar(tipo);
-    p.mostrar();*/
+int main() {
 
-    cliente c;
-    int id = 1;
-    c.cargar(id);
-    c.mostrar();
+    int opcion = 0;
+    rlutil::setBackgroundColor(rlutil::BLUE);
+    rlutil::hidecursor();
+
+    do {
+        opcion = mostrarMenuPrincipal();
+
+        switch (opcion) {
+            case 0:
+                menuLogicoDatosBase();
+                break;
+            case 1:
+                menuLogicoOperaciones();
+                break;
+            case 2:
+                cout << endl << "Saliendo...\n";
+                return 0;
+            default:
+                cout << "Opcion invalida. Intente de nuevo.\n";
+                break;
+        }
+
+    } while (opcion != 2);
+
     return 0;
 }

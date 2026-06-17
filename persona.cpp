@@ -1,8 +1,8 @@
-#include "persona.h"
+#include "Persona.h"
 #include "FuncionesGenerales.h"
 #include <cstring>
 
-persona::persona(char* documento, char* nombre, char* apellido, char* numeroTelefono, char* correo, char* direccion, bool estado){
+Persona::Persona(char* documento, char* nombre, char* apellido, char* numeroTelefono, char* correo, char* direccion, bool estado){
     strcpy(_documento, documento);
     strcpy(_nombre, nombre);
     strcpy(_apellido, apellido);
@@ -12,7 +12,7 @@ persona::persona(char* documento, char* nombre, char* apellido, char* numeroTele
     _estado = estado;
 }
 
-persona::persona() {
+Persona::Persona() {
     strcpy(_documento, "");
     std::strcpy(_nombre, "");
     std::strcpy(_apellido, "");
@@ -21,7 +21,7 @@ persona::persona() {
     std::strcpy(_direccion, "");
     _estado = false;
 }
-void persona::cargarDocumento(int tipoDocumento) {
+void Persona::cargarDocumento(int tipoDocumento) {
     char documento[20];
     const char* etiqueta = (tipoDocumento == 1) ? "DNI: " : (tipoDocumento == 2) ? "CUIT: " : "CUIL: ";
 
@@ -38,7 +38,7 @@ void persona::cargarDocumento(int tipoDocumento) {
     }
 }
 
-void persona::cargarTelefono() {
+void Persona::cargarTelefono() {
     char numeroTelefono[20];
     while (true) {
         std::cout << "TELEFONO: ";
@@ -52,9 +52,7 @@ void persona::cargarTelefono() {
     }
 }
 
-void persona::cargar(int tipoDocumento) {
-
-    cargarDocumento(tipoDocumento);
+void Persona::cargar() {
 
     while (true) {
         char nombre[20];
@@ -91,7 +89,7 @@ void persona::cargar(int tipoDocumento) {
     std::cout << "\nCARGA EXITOSA\n" << std::endl;
 }
 
-void persona::mostrar(){
+void Persona::mostrar(){
     std::cout<< "Documento: " << getDocumento() << std::endl;
     std::cout<< "Nombre: " << getNombre() << " " << getApellido() << std::endl;
     std::cout<< "Telefono: " << getNumeroTelefono() << std::endl;
@@ -103,28 +101,28 @@ void persona::mostrar(){
 }
 // getters
 
-char* persona::getDocumento(){
+char* Persona::getDocumento(){
 return _documento;
 }
-char* persona::getNombre(){
+char* Persona::getNombre(){
     return _nombre;
 }
-char* persona::getApellido(){
+char* Persona::getApellido(){
     return _apellido;
 }
-char* persona::getNumeroTelefono(){
+char* Persona::getNumeroTelefono(){
     return _numeroTelefono;
 }
-char* persona::getCorreoElectronico(){
+char* Persona::getCorreoElectronico(){
     return _correoElectronico;
 }
-char* persona::getDireccion(){
+char* Persona::getDireccion(){
     return _direccion;
 }
-bool persona::getEstado(){
+bool Persona::getEstado(){
     return _estado;
 }
-string persona::getEstadoStr(){
+string Persona::getEstadoStr(){
     if(_estado ==1){
         return "activo";
     }
@@ -132,7 +130,7 @@ string persona::getEstadoStr(){
 }
 // setters
 
-bool persona::setDni(char* documento){
+bool Persona::setDni(char* documento){
     int len = strlen(documento);
     if (len==8){
         strcpy(_documento, documento);
@@ -141,7 +139,7 @@ bool persona::setDni(char* documento){
     return false;
 }
 
-bool persona::setCuit(char* documento){
+bool Persona::setCuit(char* documento){
     int len = strlen(documento);
     if(len==11){
         strcpy(_documento, documento);
@@ -150,7 +148,7 @@ bool persona::setCuit(char* documento){
     return false;
 }
 
-bool persona::setNombre(char* nombre){
+bool Persona::setNombre(char* nombre){
     if(esTextoValido(nombre)){
         strcpy(_nombre, nombre);
         return true;
@@ -158,7 +156,7 @@ bool persona::setNombre(char* nombre){
     return false;
 }
 
-bool persona::setApellido(char* apellido){
+bool Persona::setApellido(char* apellido){
     if(esTextoValido(apellido)){
         strcpy(_apellido, apellido);
         return true;
@@ -166,7 +164,7 @@ bool persona::setApellido(char* apellido){
     return false;
 }
 
-int persona::setNumeroTelefono(char *telefono){
+int Persona::setNumeroTelefono(char *telefono){
     int len = strlen(telefono);
     int num;
 
@@ -182,7 +180,7 @@ int persona::setNumeroTelefono(char *telefono){
     return 1;
 }
 
-bool persona::setCorreoElectronico(char* correoElectronico){
+bool Persona::setCorreoElectronico(char* correoElectronico){
     bool tieneArroba = false;
 
     for(int i = 0; correoElectronico[i] != '\0'; i++){
@@ -200,11 +198,11 @@ bool persona::setCorreoElectronico(char* correoElectronico){
     return true;
 }
 
-void persona::setDireccion(char* direccion){
+void Persona::setDireccion(char* direccion){
     strcpy(_direccion, direccion);
 }
 
-void persona::setEstado(bool estado){
+void Persona::setEstado(bool estado){
     _estado = estado;
 }
 

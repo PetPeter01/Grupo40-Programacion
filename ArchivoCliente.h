@@ -21,7 +21,7 @@ public:
     int altaCliente(int tipo);
     int reactivarCliente(char* documento);
 
-    bool bajaLogica();
+    bool bajaLogica(int tipo);
     void listarDocumentosDadosDeBaja();
 
     int generarIdCliente();

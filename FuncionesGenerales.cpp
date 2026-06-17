@@ -42,3 +42,22 @@ int PedirEnteroValido(string texto) {
 
     return numero;
 }
+
+float pedirFloatValido(string texto) {
+    float numero;
+
+    while (true) {
+        cout << texto;
+        cin >> numero;
+
+        if (cin.good()) {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return numero;
+        }
+        else {
+            cout << "Entrada invalida. Por favor, ingrese un numero valido (ej: 3.14 o -0.5).\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+}

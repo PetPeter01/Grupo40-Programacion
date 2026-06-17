@@ -32,15 +32,46 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="ArchivoCliente.cpp" />
+		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoMovimientoStock.cpp" />
+		<Unit filename="ArchivoMovimientoStock.h" />
+		<Unit filename="ArchivoProveedor.cpp" />
+		<Unit filename="ArchivoProveedor.h" />
+		<Unit filename="ArchivoStock.cpp" />
+		<Unit filename="ArchivoStock.h" />
+		<Unit filename="ArchivoTiposDeEquipo.cpp" />
+		<Unit filename="ArchivoTiposDeEquipo.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="FuncionesGenerales.cpp" />
 		<Unit filename="FuncionesGenerales.h" />
+		<Unit filename="Menu.cpp" />
+		<Unit filename="Menu.h" />
+		<Unit filename="MovimientoStock.cpp" />
+		<Unit filename="MovimientoStock.h" />
+		<Unit filename="Producto.cpp" />
+		<Unit filename="Producto.h" />
+		<Unit filename="ProductoArchivo.cpp" />
+		<Unit filename="ProductoArchivo.h" />
+		<Unit filename="Stock.cpp" />
+		<Unit filename="Stock.h" />
+		<Unit filename="TiposDeEquipo.cpp" />
+		<Unit filename="TiposDeEquipo.h" />
+		<Unit filename="cliente.cpp" />
+		<Unit filename="cliente.h" />
+		<Unit filename="detalleTransaccion.cpp" />
+		<Unit filename="detalleTransaccion.h" />
+		<Unit filename="detalleVenta.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="persona.cpp" />
 		<Unit filename="persona.h" />
+		<Unit filename="proveedor.cpp" />
+		<Unit filename="proveedor.h" />
 		<Unit filename="transaccion.cpp" />
 		<Unit filename="transaccion.h" />
+		<Unit filename="venta.cpp" />
+		<Unit filename="venta.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

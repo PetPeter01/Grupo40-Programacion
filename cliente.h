@@ -1,7 +1,8 @@
 #ifndef CLIENTE_H_INCLUDED
 #define CLIENTE_H_INCLUDED
+#include "persona.h"
 
-class cliente: persona {
+class Cliente: public Persona {
     private:
         int _idCliente;
         int _tipoCliente;
@@ -13,7 +14,7 @@ class cliente: persona {
         void setIdCliente(int id);
         bool setTipoCliente(int id);
 
-        void cargar(int id);
+        void cargar(char* documento, int id, int tipo);
         void mostrar();
 };
 

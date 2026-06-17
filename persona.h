@@ -2,7 +2,7 @@
 #define PERSONA_H_INCLUDED
 #include <iostream>
 
-class persona {
+class Persona {
     private:
         int _tipo;
         char _documento[13];
@@ -14,8 +14,8 @@ class persona {
         bool _estado;
 
     public:
-        persona(char* documento, char* nombre, char* apellido, char* numeroTelefono, char* correo, char* direccion, bool estado);
-        persona();
+        Persona(char* documento, char* nombre, char* apellido, char* numeroTelefono, char* correo, char* direccion, bool estado);
+        Persona();
         int getTipo();
         char* getDocumento();
         char* getNombre();
@@ -35,7 +35,7 @@ class persona {
         void setDireccion(char* correoElectronico);
         void setEstado(bool estado);
 
-        void cargar(int tipoDocumento);
+        void cargar();
         void cargarDocumento(int tipoDocumento);
         void cargarTelefono();
         void mostrar();
