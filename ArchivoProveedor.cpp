@@ -1,0 +1,186 @@
+#include "ArchivoProveedor.h"
+#include "proveedor.h"
+#include "FuncionesGenerales.h"
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+
+int ArchivoProveedor::getProximoId() {
+    return contarRegistros() + 1;
+}
+
+int ArchivoProveedor::altaProveedor() {
+    Proveedor p;
+
+    int id = getProximoId();
+    int tipo = PedirEnteroValido("INGRESE TIPO DE DOCUMENTO: 1. DNI / 2. CUIT/CUIL: ");
+    if(tipo < 0 || tipo > 3){
+        return -2;
+    }
+    p.cargarDocumento(tipo);
+    p.cargar(id);
+    if(!p.getEstado()){
+        return -1; // error al cargar
+    }
+
+    ArchivoProveedor archivo;
+    archivo.agregarRegistro(p);
+
+    cout << "Proveedor creado con ID: " << p.getIdProveedor() << endl;
+    return 1; // ok
+}
+
+
+int ArchivoProveedor::contarRegistros() {
+    Proveedor p;
+    FILE* pProvee = fopen(_nombreArchivo, "rb");
+    if (pProvee == nullptr) {
+        return 0;
+    }
+
+    int contador = 0;
+    while (fread(&p, tamanioRegistro, 1, pProvee) == 1) {
+        contador++;
+    }
+
+    fclose(pProvee);
+    return contador;
+}
+
+Proveedor ArchivoProveedor::leerRegistro(int pos) {
+    Proveedor reg;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return reg;
+
+    fseek(p, pos * tamanioRegistro, SEEK_SET);
+    fread(&reg, tamanioRegistro, 1, p);
+    fclose(p);
+    return reg;
+}
+
+bool ArchivoProveedor::listarRegistros() {
+    int cant = contarRegistros();
+
+    if (cant == 0) {
+        std::cout << "No hay proveedores registrados o el archivo no existe.\n";
+        return false;
+    }
+
+    bool hayRegistrosActivos = false;
+
+    for (int i = 0; i < cant; i++) {
+        Proveedor reg = leerRegistro(i);
+
+        if (reg.getEstado() == true) {
+            reg.mostrar();
+            std::cout << "--------------------------------\n";
+            hayRegistrosActivos = true;
+        }
+    }
+
+    return hayRegistrosActivos;
+}
+
+int ArchivoProveedor::agregarRegistro(Proveedor reg) {
+    FILE* p = fopen(_nombreArchivo, "ab");
+    if (p == nullptr) {
+        cout << "ERROR DE ARCHIVO\n";
+        return -1;
+    }
+
+    int escribio = fwrite(&reg, tamanioRegistro, 1, p);
+    fclose(p);
+    return escribio;
+}
+
+
+bool ArchivoProveedor::bajaLogica() {
+    cout << "INGRESE ID DEL PROVEEDOR A ELIMINAR: ";
+    int id;
+    cin >> id;
+    cin.ignore();
+
+    int pos = buscarPorId(id);
+    if (pos < 0) {
+        cout << "Proveedor no encontrado.\n";
+        return false;
+    }
+
+    Proveedor reg = leerRegistro(pos);
+    if (!reg.getEstado()) {
+        cout << "El proveedor ya esta dado de baja.\n";
+        return false;
+    }
+
+    reg.setEstado(false);
+    int ok = modificarRegistro(reg, pos);
+    if (ok == 1) {
+        cout << "Proveedor dado de baja correctamente.\n";
+        return true;
+    }
+    cout << "No se pudo modificar el registro.\n";
+    return false;
+}
+
+int ArchivoProveedor::modificarRegistro(Proveedor reg, int pos) {
+    FILE* p = fopen(_nombreArchivo, "rb+");
+    if (p == nullptr) return -1;
+
+    fseek(p, pos * tamanioRegistro, SEEK_SET);
+    int escribio = fwrite(&reg, tamanioRegistro, 1, p);
+    fclose(p);
+
+    if (escribio != 1) return -2;
+    return 1;
+}
+
+int ArchivoProveedor::buscarPorId(int idBuscado) {
+    Proveedor reg;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return -2;
+
+    int pos = 0;
+    while (fread(&reg, tamanioRegistro, 1, p) == 1) {
+        if (reg.getIdProveedor() == idBuscado) {
+            fclose(p);
+            return pos;
+        }
+        pos++;
+    }
+
+    fclose(p);
+    return -1;
+}
+
+int ArchivoProveedor::buscarPorNombre(const char* nombreBuscado) {
+    Proveedor reg;
+    FILE* p = fopen(_nombreArchivo, "rb");
+    if (p == nullptr) return -2;
+
+    int pos = 0;
+    while (fread(&reg, tamanioRegistro, 1, p) == 1) {
+        if (reg.getEstado() && std::strcmp(reg.getNombre(), nombreBuscado) == 0) {
+            fclose(p);
+            return pos;
+        }
+        pos++;
+    }
+
+    fclose(p);
+    return -1;
+}
+
+int ArchivoProveedor::reactivarProveedor(int idProveedor) {
+    int pos = buscarPorId(idProveedor);
+    if (pos < 0) return -1;
+
+    Proveedor reg = leerRegistro(pos);
+    if (reg.getEstado()) return 0;
+
+    reg.setEstado(true);
+    int ok = modificarRegistro(reg, pos);
+    if (ok == 1) return 1;
+    return -2;
+}
