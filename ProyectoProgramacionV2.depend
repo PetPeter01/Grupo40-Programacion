@@ -4,20 +4,20 @@
 	"Menu.h"
 	"rlutil.h"
 
-1781550788 source:c:\users\losan\desktop\proyectoprogramaciónv2\funcionesgenerales.cpp
+1781669861 source:c:\users\losan\desktop\proyectoprogramaciónv2\funcionesgenerales.cpp
 	"FuncionesGenerales.h"
 	<limits>
 	<iostream>
 
-1781550807 c:\users\losan\desktop\proyectoprogramaciónv2\funcionesgenerales.h
+1781669861 c:\users\losan\desktop\proyectoprogramaciónv2\funcionesgenerales.h
 	<iostream>
 
-1781649279 source:c:\users\losan\desktop\proyectoprogramaciónv2\persona.cpp
+1781669861 source:c:\users\losan\desktop\proyectoprogramaciónv2\persona.cpp
 	"Persona.h"
 	"FuncionesGenerales.h"
 	<cstring>
 
-1781649287 c:\users\losan\desktop\proyectoprogramaciónv2\persona.h
+1781669861 c:\users\losan\desktop\proyectoprogramaciónv2\persona.h
 	<iostream>
 
 1765044875 source:c:\users\losan\desktop\proyectoprogramaciónv2\fecha.cpp
@@ -37,12 +37,12 @@
 	<string>
 	"Fecha.h"
 
-1781649294 source:c:\users\losan\desktop\proyectoprogramaciónv2\cliente.cpp
+1781669861 source:c:\users\losan\desktop\proyectoprogramaciónv2\cliente.cpp
 	"Persona.h"
 	"Cliente.h"
 	"FuncionesGenerales.h"
 
-1781645671 c:\users\losan\desktop\proyectoprogramaciónv2\cliente.h
+1781669861 c:\users\losan\desktop\proyectoprogramaciónv2\cliente.h
 	"persona.h"
 
 1781649300 source:c:\users\losan\desktop\proyectoprogramaciónv2\proveedor.cpp
@@ -69,11 +69,11 @@
 	<cstring>
 	"Cliente.h"
 
-1781649148 source:c:\users\losan\desktop\proyectoprogramaciónv2\venta.cpp
+1781669861 source:c:\users\losan\desktop\proyectoprogramaciónv2\venta.cpp
 	"venta.h"
 	"FuncionesGenerales.h"
 
-1781649160 c:\users\losan\desktop\proyectoprogramaciónv2\venta.h
+1781669861 c:\users\losan\desktop\proyectoprogramaciónv2\venta.h
 	"transaccion.h"
 
 1781654765 source:c:\users\losan\desktop\proyectoprogramaciónv2\archivoproveedor.cpp

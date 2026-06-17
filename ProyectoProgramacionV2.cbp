@@ -36,6 +36,8 @@
 		<Unit filename="ArchivoCliente.h" />
 		<Unit filename="ArchivoMovimientoStock.cpp" />
 		<Unit filename="ArchivoMovimientoStock.h" />
+		<Unit filename="ArchivoProducto.cpp" />
+		<Unit filename="ArchivoProducto.h" />
 		<Unit filename="ArchivoProveedor.cpp" />
 		<Unit filename="ArchivoProveedor.h" />
 		<Unit filename="ArchivoStock.cpp" />
@@ -52,8 +54,6 @@
 		<Unit filename="MovimientoStock.h" />
 		<Unit filename="Producto.cpp" />
 		<Unit filename="Producto.h" />
-		<Unit filename="ProductoArchivo.cpp" />
-		<Unit filename="ProductoArchivo.h" />
 		<Unit filename="Stock.cpp" />
 		<Unit filename="Stock.h" />
 		<Unit filename="TiposDeEquipo.cpp" />
