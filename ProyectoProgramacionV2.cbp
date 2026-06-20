@@ -68,6 +68,7 @@
 		<Unit filename="persona.h" />
 		<Unit filename="proveedor.cpp" />
 		<Unit filename="proveedor.h" />
+		<Unit filename="tiposDeEquipo.dat" />
 		<Unit filename="transaccion.cpp" />
 		<Unit filename="transaccion.h" />
 		<Unit filename="venta.cpp" />

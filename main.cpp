@@ -1,9 +1,12 @@
 #include <iostream>
 #include "Menu.h"
+#include "ArchivoTiposDeEquipo.h"
 #include "rlutil.h"
 using namespace std;
 
 int main() {
+    ArchivoTiposDeEquipo archTipos;
+    archTipos.inicializar10PorDefecto();
 
     int opcion = 0;
     rlutil::setBackgroundColor(rlutil::BLUE);

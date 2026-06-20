@@ -117,8 +117,7 @@ int ArchivoCliente::BuscarPorDocumento(char* documentoBuscado) {
     int tam = contarRegistros();
     for(int i=0; i<tam; i++){
         Cliente cliente = leerRegistro(i);
-        if (cliente.getEstado() && strcmp(cliente.getDocumento(), documentoBuscado)==0){
-            cliente.mostrar();
+        if (strcmp(cliente.getDocumento(), documentoBuscado)==0){
             return i;
         }
     }
@@ -163,25 +162,16 @@ void ArchivoCliente::listarDocumentosDadosDeBaja() {
 }
 
 bool ArchivoCliente::bajaLogica(int tipo) {
-
-    Cliente reg;
-    FILE* pCliente = fopen(_nombreArchivo, "rb");
-
-    if (pCliente == nullptr) {
-        cout << "ERROR AL ABRIR ARCHIVO\n";
-        return false;
-    }
-
+    Cliente cliente;
+    int tam = contarRegistros();
     bool hay = false;
-    cout << "Documentos cargados:\n";
-    while (fread(&reg, tamanioRegistro, 1, pCliente) == 1) {
-        if (reg.getEstado()) {
-            cout << "- " << reg.getDocumento() << "\n";
+    for (int i; i<tam; i++){
+        cliente = leerRegistro(i);
+        if(!cliente.getEstado()){
             hay = true;
+            cout << "- " << cliente.getDocumento();
         }
     }
-
-    fclose(pCliente);
 
     if (!hay) {
         cout << "No hay clientes activos para borrar.\n";
@@ -189,22 +179,22 @@ bool ArchivoCliente::bajaLogica(int tipo) {
     }
 
     cout << "Ingrese el documento (DNI/CUIT) del cliente a borrar: ";
-    reg.cargarDocumento(tipo);
+    cliente.cargarDocumento(tipo);
 
-    int pos = BuscarPorDocumento(reg.getDocumento());
+    int pos = BuscarPorDocumento(cliente.getDocumento());
     if (pos < 0) {
         cout << "No existe un cliente con ese documento.\n";
         return false;
     }
 
-    reg = leerRegistro(pos);
-    if (!reg.getEstado()) {
+    cliente = leerRegistro(pos);
+    if (!cliente.getEstado()) {
         cout << "El cliente ya esta dado de baja.\n";
         return false;
     }
 
-    reg.setEstado(false);
-    if (modificarRegistro(reg, pos) == 1) {
+    cliente.setEstado(false);
+    if (modificarRegistro(cliente, pos) == 1) {
         cout << "Cliente dado de baja correctamente.\n";
         return true;
     }

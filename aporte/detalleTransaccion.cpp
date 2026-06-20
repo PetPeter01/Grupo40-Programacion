@@ -12,7 +12,7 @@ void DetalleTransaccion::cargar(int idDetalle, int idTransaccion, int idProducto
         cout << "Cantidad invalida (debe ser > 0).\n";
     }
     while (true) {
-        precioUnitario = pedirFloatValido("PRECIO UNITARIO: ");
+        precioUnitario = PedirFloatValido("PRECIO UNITARIO: ");
         if (setPrecioUnitario(precioUnitario)) break;
         cout << "Cantidad invalida (debe ser > 0).\n";
     }

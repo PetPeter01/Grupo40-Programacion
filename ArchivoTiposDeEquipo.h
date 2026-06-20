@@ -8,7 +8,7 @@ private:
     int  tamanioRegistro;
 
 public:
-    TiposDeEquipoArchivo(const char* nombreArchivo = "tiposDeEquipo.dat") {
+    ArchivoTiposDeEquipo(const char* nombreArchivo = "tiposDeEquipo.dat") {
         strcpy(_nombreArchivo, nombreArchivo);
         tamanioRegistro = sizeof(TiposDeEquipo);
     }

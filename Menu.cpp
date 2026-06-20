@@ -80,7 +80,7 @@ int mostrarDatosBase(){
     rlutil::locate(55, 11); cout << "CLIENTES";
     rlutil::locate(55, 12); cout << "PRODUCTOS";
     rlutil::locate(55, 13); cout << "PROVEEDORES";
-    rlutil::locate(55, 14); cout << "EMPLEADOS";
+    rlutil::locate(55, 14); cout << "borrar";
     rlutil::locate(55, 15); cout << "TIPOS DE EQUIPO";
     rlutil::locate(55, 16); cout << "ATRAS";
 
@@ -166,7 +166,7 @@ int mostrarMenuCliente() {
     return y;
 }
 
-/*int mostrarMenuProductos() {
+int mostrarMenuProductos() {
     int y = 0;
     const int cantidadOpciones = 4;
     bool seleccionar = false;
@@ -353,39 +353,7 @@ int mostrarMenuMovimientoStock(){
     }
 
     return y;
-}*/
-
-/*long long ValidarDocumentoSegunTipo(int tipo) {
-   rlutil::showcursor();
-    Cliente c;
-    int documento;
-    long long documentoLargo;
-
-    switch(tipo) {
-        case 1:
-            while(true) {
-                documento = PedirEnteroValido("DNI: ");
-                if(c.setDni(documento)) break;
-                std::cout << "DNI invalido\n";
-            }
-            return documento;
-            break;
-        case 2:
-            while(true) {
-                documentoLargo = PedirEnteroValidoLargo("CUIT: ");
-                if(c.setCuit(documentoLargo)) break;
-                std::cout << "CUIT invalido\n";
-            }
-            return documentoLargo;
-            break;
-        default:
-            std::cout << "Tipo invalido.\n";
-            system("pause");
-            return -1;
-    }
-
-    return documento;
-} */
+}
 
 // MENUS LOGICOS
 
@@ -398,20 +366,17 @@ int menuLogicoDatosBase(){
 
         switch (opcion) {
             case 0:
-                cout << "EN PROCESO...";
                 menuLogicoCliente();
                 system("pause");
                 break;
 
             case 1:
-                cout << "EN PROCESO...";
-                //menuLogicoProductos();
+                menuLogicoProductos();
                 system("pause");
                 break;
 
             case 2:
-                cout << "EN PROCESO...";
-                //menuLogicoProveedores();
+                menuLogicoProveedores();
                 system("pause");
                 break;
 
@@ -420,8 +385,7 @@ int menuLogicoDatosBase(){
                 //menuLogicoEmpleados();
                 break;
             case 4:
-                cout << "EN PROCESO...";
-                //menuLogicoTiposEquipo();
+                menuLogicoTiposEquipo();
                 break;
             case 5:
                 cout << endl << "Volviendo...\n";
@@ -476,7 +440,7 @@ int menuLogicoOperaciones(){
     return 0;
 }
 
-/*int menuLogicoMovimientoStock(){
+int menuLogicoMovimientoStock(){
     rlutil::showcursor();
     int opcion;
     ArchivoMovimientoStock msA;
@@ -513,7 +477,19 @@ int menuLogicoOperaciones(){
     } while(opcion!=3);
     return 0;
 }
-*/
+
+int pedirTipoValido(){
+    int tipo;
+    while(true){
+        tipo = PedirEnteroValido("Tipo cliente: 1. Particular / 2. Empresa: ");
+        if(tipo ==1 || tipo == 2){
+            break;
+        }
+        cout << "opcion invalida.\n";
+    }
+    return tipo;
+}
+
 int menuLogicoCliente() {
     rlutil::showcursor();
     int opcion;
@@ -527,14 +503,7 @@ int menuLogicoCliente() {
                 system("cls");
                 cout << "Agregar cliente...\n";
                 cout << "--------------------------\n";
-                int tipo;
-                while(true){
-                    tipo = PedirEnteroValido("Tipo cliente: 1. Particular / 2. Empresa: ");
-                    if(tipo ==1 || tipo == 2){
-                        break;
-                    }
-                    cout << "opcion invalida.\n";
-                }
+                int tipo = pedirTipoValido();
                 int resultado = cA.altaCliente(tipo);
                 switch (resultado) {
                     case -1: cout << "ERROR: No se pudo guardar el cliente.\n"; break;
@@ -552,27 +521,16 @@ int menuLogicoCliente() {
                 system("cls");
                 cout << "Borrar cliente...\n";
                 cout << "--------------------------\n";
-                int tipo = PedirEnteroValido("Tipo cliente: 1. Particular / 2. Empresa: ");
-                    if(tipo ==1 || tipo == 2){
-                        cA.bajaLogica(tipo);
-                        system("pause");
-                    }
-                cout << "ERROR: ingrese una opcion valida";
+                int tipo = pedirTipoValido();
+                cA.bajaLogica(tipo);
                 break;
             }
             case 2: {
                 system("cls");
                 cout << "Reactivar cliente...\n";
                 cout << "--------------------------\n";
-                int tipo;
                 cA.listarDocumentosDadosDeBaja();
-                while(true){
-                    tipo = PedirEnteroValido("Tipo cliente: 1. Particular / 2. Empresa: ");
-                    if(tipo ==1 || tipo == 2){
-                        break;
-                    }
-                    cout << "opcion invalida.\n";
-                }
+                int tipo = pedirTipoValido();
                 c.cargarDocumento(tipo);
                 if(c.getDocumento() > 0) {
                     int exito = cA.reactivarCliente(c.getDocumento());
@@ -606,9 +564,16 @@ int menuLogicoCliente() {
             case 4: {
                 system("cls");
                 cout << "BUSCAR CLIENTE..." << endl;
-
-                int opcion = PedirEnteroValido("1. POR DOCUMENTO / 2. POR NOMBRE / 3. POR APELLIDO: ");
-
+                int opcion;
+                while(true){
+                    opcion = PedirEnteroValido("1. POR DOCUMENTO / 2. POR NOMBRE / 3. POR APELLIDO: ");
+                    if( opcion<0 || opcion > 3){
+                        cout << "Ingrese una opcion valida";
+                        system("pause");
+                    } else {
+                        break;
+                    }
+                }
                 switch(opcion) {
                     case 1: {
                         cout << "BUSCANDO POR DOCUMENTO..." << endl;
@@ -674,7 +639,7 @@ int menuLogicoCliente() {
     return 0;
 }
 
-/*int menuLogicoProductos(){
+int menuLogicoProductos(){
     rlutil::showcursor();
     int opcion;
     ProductoArchivo pA;
@@ -718,7 +683,7 @@ int menuLogicoCliente() {
     return 0;
 }
 
-int menuLogicoVentas() {
+/*int menuLogicoVentas() {
     int opcion;
     VentaArchivo pV;
 
@@ -989,11 +954,11 @@ int menuLogicoCompras() {
     } while (opcion != 6);
 
     return 0;
-}
+} */
 
 int menuLogicoProveedores() {
     rlutil::showcursor();
-    ProveedorArchivo pArch;
+    ArchivoProveedor pArch;
     int opcion;
 
     do {
@@ -1072,7 +1037,7 @@ int menuLogicoProveedores() {
 
 int menuLogicoTiposEquipo() {
     rlutil::showcursor();
-    TiposDeEquipoArchivo archTipos;
+    ArchivoTiposDeEquipo archTipos;
 
     int opcion;
     do {
@@ -1138,4 +1103,4 @@ int menuLogicoTiposEquipo() {
 
     return 0;
 }
-*/
+

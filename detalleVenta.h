@@ -1,6 +1,10 @@
-#ifndef DETALLEVENTA_H_INCLUDED
-#define DETALLEVENTA_H_INCLUDED
+#pragma once
+#include "detalleTransaccion.h"
 
+class DetalleVenta : public DetalleTransaccion{
 
+public:
 
-#endif // DETALLEVENTA_H_INCLUDED
+    void cargar(int idDetalleVenta, int idVenta, int idProducto);
+    void mostrar();
+};

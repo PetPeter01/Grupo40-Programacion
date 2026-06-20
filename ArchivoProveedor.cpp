@@ -95,12 +95,10 @@ int ArchivoProveedor::agregarRegistro(Proveedor reg) {
     return escribio;
 }
 
-
 bool ArchivoProveedor::bajaLogica() {
     cout << "INGRESE ID DEL PROVEEDOR A ELIMINAR: ";
     int id;
     cin >> id;
-    cin.ignore();
 
     int pos = buscarPorId(id);
     if (pos < 0) {

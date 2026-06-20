@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1781666383 source:c:\users\losan\desktop\proyectoprogramaciónv2\main.cpp
+1781693881 source:c:\users\losan\desktop\proyectoprogramaciónv2\main.cpp
 	<iostream>
 	"Menu.h"
+	"ArchivoTiposDeEquipo.h"
 	"rlutil.h"
 
 1781669861 source:c:\users\losan\desktop\proyectoprogramaciónv2\funcionesgenerales.cpp
@@ -27,13 +28,13 @@
 	<iostream>
 	<string>
 
-1781639720 source:c:\users\losan\desktop\proyectoprogramaciónv2\transaccion.cpp
+1781694963 source:c:\users\losan\desktop\proyectoprogramaciónv2\transaccion.cpp
 	<iostream>
 	"Transaccion.h"
 	"Fecha.h"
 	"FuncionesGenerales.h"
 
-1781639668 c:\users\losan\desktop\proyectoprogramaciónv2\transaccion.h
+1781694974 c:\users\losan\desktop\proyectoprogramaciónv2\transaccion.h
 	<string>
 	"Fecha.h"
 
@@ -52,20 +53,20 @@
 1781649847 c:\users\losan\desktop\proyectoprogramaciónv2\proveedor.h
 	"Persona.h"
 
-1781640041 source:c:\users\losan\desktop\proyectoprogramaciónv2\detalletransaccion.cpp
+1781695051 source:c:\users\losan\desktop\proyectoprogramaciónv2\detalletransaccion.cpp
 	"DetalleTransaccion.h"
 	"FuncionesGenerales.h"
 
-1781639930 c:\users\losan\desktop\proyectoprogramaciónv2\detalletransaccion.h
+1781694837 c:\users\losan\desktop\proyectoprogramaciónv2\detalletransaccion.h
 
-1781666714 source:c:\users\losan\desktop\proyectoprogramaciónv2\archivocliente.cpp
+1781693272 source:c:\users\losan\desktop\proyectoprogramaciónv2\archivocliente.cpp
 	<iostream>
 	<cstdio>
 	<cstring>
 	"ArchivoCliente.h"
 	"FuncionesGenerales.h"
 
-1781666721 c:\users\losan\desktop\proyectoprogramaciónv2\archivocliente.h
+1781669984 c:\users\losan\desktop\proyectoprogramaciónv2\archivocliente.h
 	<cstring>
 	"Cliente.h"
 
@@ -76,7 +77,7 @@
 1781669861 c:\users\losan\desktop\proyectoprogramaciónv2\venta.h
 	"transaccion.h"
 
-1781654765 source:c:\users\losan\desktop\proyectoprogramaciónv2\archivoproveedor.cpp
+1781695531 source:c:\users\losan\desktop\proyectoprogramaciónv2\archivoproveedor.cpp
 	"ArchivoProveedor.h"
 	"proveedor.h"
 	"FuncionesGenerales.h"
@@ -164,10 +165,10 @@
 	<iostream>
 	<cstring>
 
-1766209399 c:\users\losan\desktop\proyectoprogramaciónv2\menu.h
+1781669861 c:\users\losan\desktop\proyectoprogramaciónv2\menu.h
 	<string>
 
-1765044875 c:\users\losan\desktop\proyectoprogramaciónv2\rlutil.h
+1781669861 c:\users\losan\desktop\proyectoprogramaciónv2\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
@@ -181,7 +182,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1781666858 source:c:\users\losan\desktop\proyectoprogramaciónv2\menu.cpp
+1781978234 source:c:\users\losan\desktop\proyectoprogramaciónv2\menu.cpp
 	<iostream>
 	"Menu.h"
 	"rlutil.h"
@@ -196,7 +197,7 @@
 	"MovimientoStock.h"
 	"ArchivoMovimientoStock.h"
 
-1781660439 c:\users\losan\desktop\proyectoprogramaciónv2\archivotiposdeequipo.h
+1781920093 c:\users\losan\desktop\proyectoprogramaciónv2\archivotiposdeequipo.h
 	<cstring>
 	"TiposDeEquipo.h"
 
@@ -236,4 +237,18 @@
 1766540548 c:\users\losan\desktop\proyectoprogramaciónv2\archivoproducto.h
 	<iostream>
 	"Producto.h"
+
+1781694626 source:c:\users\losan\desktop\proyectoprogramaciónv2\compra.cpp
+	<iostream>
+	"compra.h"
+
+1781694638 c:\users\losan\desktop\proyectoprogramaciónv2\compra.h
+	"transaccion.h"
+
+1781694754 source:c:\users\losan\desktop\proyectoprogramaciónv2\detallecompra.cpp
+	<iostream>
+	"DetalleCompra.h"
+
+1781694770 c:\users\losan\desktop\proyectoprogramaciónv2\detallecompra.h
+	"detalleTransaccion.h"
 
