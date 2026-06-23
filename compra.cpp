@@ -3,30 +3,29 @@
 
 using namespace std;
 
-void compra::cargar(int idCompra, int idProveedor, float importe){
-
-    setId(idCompra);
+void Compra::cargar(int idCompra, int idProveedor, float importe){
     setIdProveedor(idProveedor);
     Transaccion::cargar(idCompra, importe);
 
 }
 
-void compra::mostrar(){
+void Compra::mostrar(char* nombreProv, char* apellidoProv){
 
     cout << "---------------" << endl;
     cout << "ID Compra: " << getId() << endl;
     cout << "ID Proveedor: " << getIdProveedor() << endl;
+    cout << "Proveedor: " << nombreProv << " " << apellidoProv << endl;
     Transaccion::mostrar();
     cout << "---------------" << endl;
 
 }
 
-void compra::setIdProveedor(int idProveedor){
+void Compra::setIdProveedor(int idProveedor){
     if(idProveedor>0){
             _idProveedor = idProveedor;
     }
 }
 
-int compra::getIdProveedor(){
+int Compra::getIdProveedor(){
     return _idProveedor;
 }

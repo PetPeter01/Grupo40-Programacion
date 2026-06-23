@@ -1,7 +1,7 @@
 #pragma once
 #include "transaccion.h"
 
-class compra : public Transaccion{
+class Compra : public Transaccion{
 private:
     int _idProveedor;
 public:
@@ -10,5 +10,5 @@ public:
     void setIdProveedor(int idProveedor);
 
     void cargar(int idCompra, int idProveedor, float importe);
-    void mostrar();
+    void mostrar(char* nombreProv, char* apellidoProv);
 };
