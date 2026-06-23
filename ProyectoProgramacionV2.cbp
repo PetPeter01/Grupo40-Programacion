@@ -34,6 +34,10 @@
 		</Compiler>
 		<Unit filename="ArchivoCliente.cpp" />
 		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoCompra.cpp" />
+		<Unit filename="ArchivoCompra.h" />
+		<Unit filename="ArchivoDetalleCompra.cpp" />
+		<Unit filename="ArchivoDetalleCompra.h" />
 		<Unit filename="ArchivoMovimientoStock.cpp" />
 		<Unit filename="ArchivoMovimientoStock.h" />
 		<Unit filename="ArchivoProducto.cpp" />
@@ -60,6 +64,10 @@
 		<Unit filename="TiposDeEquipo.h" />
 		<Unit filename="cliente.cpp" />
 		<Unit filename="cliente.h" />
+		<Unit filename="compra.cpp" />
+		<Unit filename="compra.h" />
+		<Unit filename="detalleCompra.cpp" />
+		<Unit filename="detalleCompra.h" />
 		<Unit filename="detalleTransaccion.cpp" />
 		<Unit filename="detalleTransaccion.h" />
 		<Unit filename="detalleVenta.h" />
