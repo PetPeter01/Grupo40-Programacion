@@ -1,0 +1,31 @@
+#pragma once
+#include <cstring>
+#include "Compra.h"
+
+class ArchivoCompra {
+private:
+    char _nombreArchivo[30];
+    int  tamanioRegistro;
+
+public:
+    ArchivoCompra(const char* nombreArchivo = "compras.dat") {
+        strcpy(_nombreArchivo, nombreArchivo);
+        tamanioRegistro = sizeof(Compra);
+    }
+
+    int   altaCompra();
+    int getProximoId();
+    bool  agregarRegistro(Compra reg);
+    Compra leerRegistro(int pos);
+    int modificarRegistro(Compra reg, int pos);
+    int   contarRegistros();
+    bool  listarRegistros();
+    int   generarIdCompra();
+    int   ModificarRegistro(Compra reg, int pos);
+    int  bajaLogica(int idCompra);
+    int   buscarPorId(int idCompra);
+    int   reactivarCompra(int idCompra);
+    float gastoPorEmpleado(int idEmpleado);
+    float gastoAnual(int anio);
+    int listarComprasPorEmpleado(int idEmpleado);
+};
