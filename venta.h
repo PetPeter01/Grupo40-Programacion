@@ -4,13 +4,10 @@
 
 class Venta: Transaccion{
     private:
-        int _idVenta;
         int _idCliente;
     public:
-        int getIdVenta();
         int getIdCliente();
 
-        void setIdVenta(int idVenta);
         void setIdCliente(int idCliente);
 
         void cargar(int idVenta, int idCliente, float importe);
