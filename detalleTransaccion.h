@@ -12,7 +12,7 @@ class DetalleTransaccion {
         bool _estado;
 
     public:
-        void cargar(int idDetalle, int idTransaccion, int idProducto);
+        void cargar(int idDetalle, int idTransaccion, int idProducto, float PrecioUnitario);
         void mostrar();
         float calcularSubtotal(float precioUnitario, int cantidad);
 

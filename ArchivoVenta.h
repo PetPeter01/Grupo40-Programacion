@@ -30,4 +30,7 @@ public:
     int bajaLogica(int idVenta);
     int reactivarVenta(int idVenta);
 
+    float recaudacionAnual(int anio);
+    float recaudacionPorCliente(char* documento);
+
 };

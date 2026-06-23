@@ -224,3 +224,34 @@ int ArchivoVenta::reactivarVenta(int idVenta){
     vnt.setEstado(true);
     return modificarRegistro(vnt, pos);
 }
+
+float ArchivoVenta::recaudacionPorCliente(char* documento) {
+    ArchivoCliente c;
+    int pos = c.BuscarPorDocumento(documento);
+    Cliente cliente = c.leerRegistro(pos);
+
+    Venta venta;
+    float total = 0;
+    int tam = contarRegistros();
+    for(int i=0; i < tam; i++){
+        if (venta.getEstado() && strcmp(documento, cliente.getDocumento())==1) {
+            total += venta.getImporte();
+        }
+    }
+
+    return total;
+}
+
+float ArchivoVenta::recaudacionAnual(int anio){
+    Venta venta;
+    float total = 0;
+    int tam = contarRegistros();
+    for(int i=0; i < tam; i++){
+        if (venta.getFecha().getAnio()==anio) {
+            total += venta.getImporte();
+        }
+    }
+    return total;
+}
+
+

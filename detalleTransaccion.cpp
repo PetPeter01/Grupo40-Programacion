@@ -1,19 +1,13 @@
 #include "DetalleTransaccion.h"
 #include "FuncionesGenerales.h"
 
-void DetalleTransaccion::cargar(int idDetalle, int idTransaccion, int idProducto){
+void DetalleTransaccion::cargar(int idDetalle, int idTransaccion, int idProducto, float precioUnitario){
     int cant;
-    float precioUnitario;
-
+    setPrecioUnitario(precioUnitario);
     setIdProducto(idProducto);
     while (true) {
         cant = PedirEnteroValido("CANTIDAD COMPRADA: ");
         if (setCantidad(cant)) break;
-        cout << "Cantidad invalida (debe ser > 0).\n";
-    }
-    while (true) {
-        precioUnitario = pedirFloatValido("PRECIO UNITARIO: ");
-        if (setPrecioUnitario(precioUnitario)) break;
         cout << "Cantidad invalida (debe ser > 0).\n";
     }
 

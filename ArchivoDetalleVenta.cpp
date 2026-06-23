@@ -38,7 +38,7 @@ float ArchivoDetalleVenta::altaDetalle(int idVenta, Fecha fechaVenta){
 
         int idDetalle = getProximoId();
 
-        detVen.cargar(idDetalle, idVenta, idProducto);
+        detVen.cargar(idDetalle, idVenta, idProducto, prod.getPrecio());
 
         if(!archStock.hayStockSuficiente(idProducto, detVen.getCantidad())){
             cout << "Stock insuficiente.\n";

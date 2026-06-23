@@ -3,12 +3,12 @@
 
 using namespace std;
 
-void DetalleVenta::cargar(int idDetalleVenta, int idVenta, int idProducto){
+void DetalleVenta::cargar(int idDetalleVenta, int idVenta, int idProducto, float precioUnitario){
 
     setIdDetalleTransaccion(idDetalleVenta);
     setIdTransaccion(idVenta);
 
-    DetalleTransaccion::cargar(idDetalleVenta, idVenta, idProducto);
+    DetalleTransaccion::cargar(idDetalleVenta, idVenta, idProducto, precioUnitario);
 
 }
 
