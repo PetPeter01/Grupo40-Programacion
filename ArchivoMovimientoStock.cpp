@@ -115,19 +115,14 @@ int ArchivoMovimientoStock::modificarRegistro(MovimientoStock reg, int pos) {
 }
 
 int ArchivoMovimientoStock::buscarPorId(int idBuscado) {
-    MovimientoStock reg;
-    FILE* p = fopen(_nombreArchivo, "rb");
-    if (p == nullptr) return -2;
-
-    int pos = 0;
-    while (fread(&reg, tamanioRegistro, 1, p) == 1) {
-        if (reg.getIdMovimiento() == idBuscado) {
-            fclose(p);
-            return pos;
+    int tam = contarRegistros();
+    int i;
+    MovimientoStock mov;
+    for(i=1; i < tam; i++){
+        mov = leerRegistro(i);
+        if(mov.getIdMovimiento()==idBuscado){
+            return i;
         }
-        pos++;
     }
-
-    fclose(p);
     return -1;
 }
