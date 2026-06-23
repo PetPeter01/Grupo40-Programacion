@@ -10,7 +10,7 @@
 //#include "ArchivoVenta.h"
 #include "ArchivoProveedor.h"
 #include "ArchivoTiposDeEquipo.h"
-//#include "ArchivoCompra.h"
+#include "ArchivoCompra.h"
 #include "MovimientoStock.h"
 #include "ArchivoMovimientoStock.h"
 
@@ -71,7 +71,7 @@ int mostrarMenuPrincipal() {
 
 int mostrarDatosBase(){
     int y = 0;
-    const int cantidadOpciones = 6;
+    const int cantidadOpciones = 5;
     bool seleccionar = false;
     int yAnterior = -1;
 
@@ -80,9 +80,8 @@ int mostrarDatosBase(){
     rlutil::locate(55, 11); cout << "CLIENTES";
     rlutil::locate(55, 12); cout << "PRODUCTOS";
     rlutil::locate(55, 13); cout << "PROVEEDORES";
-    rlutil::locate(55, 14); cout << "borrar";
-    rlutil::locate(55, 15); cout << "TIPOS DE EQUIPO";
-    rlutil::locate(55, 16); cout << "ATRAS";
+    rlutil::locate(55, 14); cout << "TIPOS DE EQUIPO";
+    rlutil::locate(55, 15); cout << "ATRAS";
 
     while (!seleccionar) {
         if (y != yAnterior) {
@@ -381,13 +380,10 @@ int menuLogicoDatosBase(){
                 break;
 
             case 3:
-                cout << "ELIMINAR";
-                //menuLogicoEmpleados();
+                menuLogicoTiposEquipo();
+                system("pause");
                 break;
             case 4:
-                menuLogicoTiposEquipo();
-                break;
-            case 5:
                 cout << endl << "Volviendo...\n";
                 return 0;
 
@@ -416,14 +412,13 @@ int menuLogicoOperaciones(){
                 break;
 
             case 1:
-                cout << "EN PROCESO...";
-                //menuLogicoCompras();
+                menuLogicoCompras();
                 system("pause");
                 break;
 
             case 2:
-                cout << "EN PROCESO...";
-                //menuLogicoMovimientoStock();
+
+                menuLogicoMovimientoStock();
                 system("pause");
                 break;
             case 3:
@@ -642,7 +637,7 @@ int menuLogicoCliente() {
 int menuLogicoProductos(){
     rlutil::showcursor();
     int opcion;
-    ProductoArchivo pA;
+    ArchivoProducto pA;
     Producto p;
 
     do {
@@ -667,7 +662,7 @@ int menuLogicoProductos(){
                 system("cls");
                 cout << "PRODUCTOS\n";
                 cout << "---------------------------------\n";
-                pA.listarRegistros();
+                pA.buscarProductoMenorTres();
                 system("pause");
                 break;
             }
@@ -830,11 +825,11 @@ int menuLogicoProductos(){
     } while (opcion != 8);
 
     return 0;
-}
+} */
 
 int menuLogicoCompras() {
     int opcion;
-    CompraArchivo cArch;
+    ArchivoCompra cArch;
 
     do {
         opcion = mostrarMenuCompras();
@@ -908,7 +903,7 @@ int menuLogicoCompras() {
                 system("cls");
                 cout << "COMPRAS POR EMPLEADO\n";
                 cout << "---------------------------------\n";
-                int idEmpleado = PedirEnteroValido("ID del empleado: ");
+                /*int idEmpleado = PedirEnteroValido("ID del empleado: ");
 
                 int resultado = cArch.listarComprasPorEmpleado(idEmpleado);
 
@@ -916,14 +911,14 @@ int menuLogicoCompras() {
                     cout << "Error al abrir el archivo.\n";
                 } else if (resultado == -2) {
                     cout << "No se encontraron compras para este empleado.\n";
-                }
+                }*/
 
                 system("pause");
                 break;
             }
             case 5: {
                 system("cls");
-                cout << "GASTO POR EMPLEADO (RESP. COMPRAS)\n";
+                /*cout << "GASTO POR EMPLEADO (RESP. COMPRAS)\n";
                 cout << "---------------------------------\n";
 
                 EmpleadoArchivo empA;
@@ -944,7 +939,7 @@ int menuLogicoCompras() {
                          << " -> GASTO $ " << total << "\n";
                 }
 
-                system("pause");
+                system("pause");*/
                 break;
         }
             case 6:
@@ -954,7 +949,7 @@ int menuLogicoCompras() {
     } while (opcion != 6);
 
     return 0;
-} */
+}
 
 int menuLogicoProveedores() {
     rlutil::showcursor();
