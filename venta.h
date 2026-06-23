@@ -2,7 +2,7 @@
 #define VENTA_H_INCLUDED
 #include "transaccion.h"
 
-class Venta: Transaccion{
+class Venta: public Transaccion{
     private:
         int _idCliente;
     public:
