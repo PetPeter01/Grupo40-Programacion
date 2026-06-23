@@ -26,6 +26,4 @@ int menuLogicoProveedores();
 int menuLogicoCompras();
 int menuLogicoMovimientoStock();
 
-long long ValidarDocumentoSegunTipo(int tipo);
-
 

@@ -7,7 +7,7 @@
 #include "Producto.h"
 #include "ArchivoCliente.h"
 #include "ArchivoProducto.h"
-//#include "ArchivoVenta.h"
+#include "ArchivoVenta.h"
 #include "ArchivoProveedor.h"
 #include "ArchivoTiposDeEquipo.h"
 #include "ArchivoCompra.h"
@@ -198,7 +198,7 @@ int mostrarMenuProductos() {
 
 int mostrarMenuVentas() {
     int y = 0;
-    const int cantidadOpciones = 9;
+    const int cantidadOpciones = 8;
     bool seleccionar = false;
     int yAnterior = -1;
 
@@ -211,8 +211,7 @@ int mostrarMenuVentas() {
     rlutil::locate(55, 15); cout << " MAYOR IMPORTE POR ANIO";
     rlutil::locate(55, 16); cout << " RECAUDACION ANUAL";
     rlutil::locate(55, 17); cout << " RECAUDACION POR CLIENTE";
-    rlutil::locate(55, 18); cout << " RECAUDACION POR EMPLEADO";
-    rlutil::locate(55, 19); cout << " ATRAS";
+    rlutil::locate(55, 18); cout << " ATRAS";
 
     while (!seleccionar) {
         if (y != yAnterior) {
@@ -291,7 +290,6 @@ int mostrarMenuTiposEquipo() {
 
     return y;
 }
-
 
 int mostrarMenuCompras() {
     int y = 0;
@@ -406,8 +404,7 @@ int menuLogicoOperaciones(){
 
         switch (opcion) {
             case 0:
-                cout << "EN PROCESO...";
-                //menuLogicoVentas();
+                menuLogicoVentas();
                 system("pause");
                 break;
 
@@ -662,11 +659,11 @@ int menuLogicoProductos(){
                 system("cls");
                 cout << "PRODUCTOS\n";
                 cout << "---------------------------------\n";
-                pA.buscarProductoMenorTres();
+                pA.listarRegistros();
                 system("pause");
                 break;
             }
-            case 3:  // VOLVER
+            case 3:
                 cout << "Volviendo...\n";
                 break;
             default:
@@ -678,9 +675,9 @@ int menuLogicoProductos(){
     return 0;
 }
 
-/*int menuLogicoVentas() {
+int menuLogicoVentas() {
     int opcion;
-    VentaArchivo pV;
+    ArchivoVenta pV;
 
     do {
         opcion = mostrarMenuVentas();
@@ -749,8 +746,8 @@ int menuLogicoProductos(){
                 system("cls");
                 cout << "Buscar venta con mayor importe por anio\n";
                 cout << "--------------------------------------\n";
-                VentaArchivo Varch;
-                Varch.BuscarMayorImportePorAnio();
+                ArchivoVenta Varch;
+                //Varch.BuscarMayorImportePorAnio();
                 system("pause");
                 break;
             }
@@ -758,7 +755,7 @@ int menuLogicoProductos(){
                 system("cls");
                 cout << "Buscar recaudacion anual\n";
                 cout << "--------------------------------------\n";
-                VentaArchivo Varch;
+                ArchivoVenta Varch;
                 int anio = PedirEnteroValido("Anio: ");
                 if (anio > 2000 && anio < 2999) {
                     float total = Varch.recaudacionAnual(anio);
@@ -777,9 +774,12 @@ int menuLogicoProductos(){
                 system("cls");
                 cout << "BUSCAR RECAUDACION POR CLIENTE\n";
                 cout << "--------------------------------------\n";
-                VentaArchivo Varch;
-                int tipo = PedirEnteroValido("Tipo cliente: 1. Particular / 2. Empresa: ");
-                long long documento = ValidarDocumentoSegunTipo(tipo);
+                ArchivoVenta Varch;
+                Cliente c;
+                int tipo = pedirTipoValido();
+                c.cargarDocumento(tipo);
+                char documento[8];
+                strcpy(documento, c.getDocumento());
                 if(documento>0){
                     float total = Varch.recaudacionPorCliente(documento);
                     if (total >= 0) {
@@ -793,39 +793,17 @@ int menuLogicoProductos(){
                 system("pause");
                 break;
             }
-            case 7:{
-                system("cls");
-                EmpleadoArchivo emp;
-                VentaArchivo vent;
-                float total=0.0f;
-                int cant=emp.contarRegistros();
-                for(int i=0;i<cant;i++){
-                    Empleado reg=emp.leerRegistro(i);
-                    if (!reg.GetEstado() || reg.GetTipoCargo() != 2) continue;
-
-                    int id=reg.GetIdEmpleado();
-                    total=vent.recaudacionPorEmpleado(id);
-                    if(total==0){
-                        cout << "EL EMPLEADO NO TUVO RECAUDACIONES" << endl;
-                    }
-                    cout << "EMPLEADO " << id << " - "
-                         << reg.GetNombre() << " " << reg.GetApellido()
-                         << " -> RECAUDO $ " << total;
-                }
-                system("pause");
-                break;
-            }
-            case 8:
+            case 7:
                 cout << "Volviendo...\n";
                 break;
             default:
                 cout << "Opcion invalida\n";
                 system("pause");
         }
-    } while (opcion != 8);
+    } while (opcion != 7);
 
     return 0;
-} */
+}
 
 int menuLogicoCompras() {
     int opcion;
