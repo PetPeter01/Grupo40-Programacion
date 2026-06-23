@@ -165,7 +165,7 @@ bool ArchivoCliente::bajaLogica(int tipo) {
     Cliente cliente;
     int tam = contarRegistros();
     bool hay = false;
-    for (int i; i<tam; i++){
+    for (int i=0; i<tam; i++){
         cliente = leerRegistro(i);
         if(!cliente.getEstado()){
             hay = true;
