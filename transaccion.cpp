@@ -23,7 +23,6 @@ void Transaccion::cargar(int id, float importe) {
 }
 
 void Transaccion::mostrar() {
-    std::cout << "ID: " << getId() << std::endl;
     std::cout << "FECHA: " << getFecha().toString() << std::endl;
     std::cout << "FORMA DE PAGO: " << getFormaDePagoStr(getFormaDePago()) << std::endl;
     std::cout << "IMPORTE TOTAL: " << getImporte() << std::endl;
