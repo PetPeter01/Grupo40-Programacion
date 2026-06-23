@@ -2,13 +2,13 @@
 #include <iostream>
 #include "Producto.h"
 
-class ProductoArchivo {
+class ArchivoProducto {
 private:
     char _nombreArchivo[30];
     int tamanioRegistro;
 
 public:
-    ProductoArchivo(const char* nombreArchivo = "productos.dat") {
+    ArchivoProducto(const char* nombreArchivo = "productos.dat") {
         strcpy(_nombreArchivo, nombreArchivo);
         tamanioRegistro = sizeof(Producto);
     }

@@ -7,7 +7,7 @@
 #include "FuncionesGenerales.h"
 using namespace std;
 
-int ProductoArchivo::altaProducto() {
+int ArchivoProducto::altaProducto() {
     Producto reg;
 
     ArchivoTiposDeEquipo archTipos;
@@ -52,11 +52,11 @@ int ProductoArchivo::altaProducto() {
     return -3; // error al guardar
 }
 
-int ProductoArchivo::getProximoId() {
+int ArchivoProducto::getProximoId() {
     return contarRegistros() + 1;
 }
 
-int ProductoArchivo::contarRegistros() {
+int ArchivoProducto::contarRegistros() {
     Producto p;
     FILE* pProd = fopen(_nombreArchivo, "rb");
     if (pProd == nullptr) {
@@ -72,7 +72,7 @@ int ProductoArchivo::contarRegistros() {
     return contador;
 }
 
-int ProductoArchivo::agregarRegistro(Producto reg) {
+int ArchivoProducto::agregarRegistro(Producto reg) {
     FILE* pProd = fopen(_nombreArchivo, "ab");
     if (pProd == nullptr) {
         return -1; // error de archivo
@@ -84,7 +84,7 @@ int ProductoArchivo::agregarRegistro(Producto reg) {
     return escribio;
 }
 
-string ProductoArchivo::getTipoEquipoStr(Producto& p) {
+string ArchivoProducto::getTipoEquipoStr(Producto& p) {
     ArchivoTiposDeEquipo arch;
 
     int pos = arch.buscarPorId(p.getIdTipoEquipo());
@@ -93,7 +93,7 @@ string ProductoArchivo::getTipoEquipoStr(Producto& p) {
     return arch.leerRegistro(pos).getDescripcion();
 } // esto debería ir en TipoEquipoProducto, tho.
 
-bool ProductoArchivo::listarRegistros() {
+bool ArchivoProducto::listarRegistros() {
     ArchivoStock s;
     Producto prod;
     FILE* pProd = fopen(_nombreArchivo, "rb");
@@ -122,7 +122,7 @@ bool ProductoArchivo::listarRegistros() {
 }
 
 
-Producto ProductoArchivo::leerRegistro(int pos) {
+Producto ArchivoProducto::leerRegistro(int pos) {
     Producto obj;
     FILE* pProd = fopen(_nombreArchivo, "rb");
 
@@ -137,7 +137,7 @@ Producto ProductoArchivo::leerRegistro(int pos) {
     return obj;
 }
 
-bool ProductoArchivo::existeProducto(const char* descripcion, const char* marca) {
+bool ArchivoProducto::existeProducto(const char* descripcion, const char* marca) {
     FILE* p = fopen(_nombreArchivo, "rb");
     if (p == nullptr) return false;
 
@@ -157,7 +157,7 @@ bool ProductoArchivo::existeProducto(const char* descripcion, const char* marca)
 }
 
 
-bool ProductoArchivo::bajaLogica() {
+bool ArchivoProducto::bajaLogica() {
     Producto reg;
     cout << "Ingrese el ID del producto: ";
     int id;
@@ -179,7 +179,7 @@ bool ProductoArchivo::bajaLogica() {
     return false;
 }
 
-int ProductoArchivo::modificarRegistro(Producto reg, int pos) {
+int ArchivoProducto::modificarRegistro(Producto reg, int pos) {
     FILE* pProd = fopen(_nombreArchivo, "rb+");
 
     if (pProd == nullptr) {
@@ -197,7 +197,7 @@ int ProductoArchivo::modificarRegistro(Producto reg, int pos) {
     return 1;
 }
 
-int ProductoArchivo::buscarPorId(int idBuscado) {
+int ArchivoProducto::buscarPorId(int idBuscado) {
     Producto prod;
     FILE* pProd = fopen(_nombreArchivo, "rb");
 
@@ -220,7 +220,7 @@ int ProductoArchivo::buscarPorId(int idBuscado) {
 
 // hacer un metodo que liste los productos con stock menor a tres
 
-void ProductoArchivo::buscarProductoMenorTres(){
+void ArchivoProducto::buscarProductoMenorTres(){
     ArchivoStock stock;
     int cantidad = contarRegistros();
 
