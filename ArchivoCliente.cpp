@@ -167,7 +167,7 @@ bool ArchivoCliente::bajaLogica(int tipo) {
     bool hay = false;
     for (int i=0; i<tam; i++){
         cliente = leerRegistro(i);
-        if(!cliente.getEstado()){
+        if(cliente.getEstado()){
             hay = true;
             cout << "- " << cliente.getDocumento();
         }

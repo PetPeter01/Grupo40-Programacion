@@ -473,7 +473,7 @@ int menuLogicoMovimientoStock(){
 int pedirTipoValido(){
     int tipo;
     while(true){
-        tipo = PedirEnteroValido("Tipo cliente: 1. Particular / 2. Empresa: ");
+        tipo = PedirEnteroValido("Tipo cliente: 1. Particular / 2. Mayorista: ");
         if(tipo ==1 || tipo == 2){
             break;
         }
@@ -515,6 +515,7 @@ int menuLogicoCliente() {
                 cout << "--------------------------\n";
                 int tipo = pedirTipoValido();
                 cA.bajaLogica(tipo);
+                system("pause");
                 break;
             }
             case 2: {
@@ -690,13 +691,9 @@ int menuLogicoVentas() {
                 int resultado = pV.altaVenta();
                 switch(resultado){
                     case 1:  cout << "Venta registrada correctamente"; break;
-                    case -1: cout << "ERROR: INVALIDO"; break;
-                    case -2: cout << "ERROR: CLIENTE NO REGISTRADO."; break;
-                    case -3: cout << "ERROR: CLIENTE DADO DE BAJA"; break;
-                    case -4: cout << "ERROR: EMPLEADO NO REGISTRADO."; break;
-                    case -5: cout << "ERROR: EMPLEADO DADO DE BAJA"; break;
-                    case -6: cout << "ERROR: EMPLEADO SIN PERMISOS"; break;
-                    case -7: cout << "ERROR AL GUARDAR LA VENTA"; break;
+                    case -1: cout << "ERROR: CLIENTE NO REGISTRADO."; break;
+                    case -2: cout << "ERROR: CLIENTE DADO DE BAJA."; break;
+                    case -3: cout << "ERROR: ERROR AL CARGAR VENTA"; break;
                 }
                 system("pause");
                 break;
